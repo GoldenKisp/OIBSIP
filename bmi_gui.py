@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 """
 BMI Calculator - desktop GUI (advanced tier).
 
@@ -9,6 +8,7 @@ Run:  python bmi_gui.py              (uses bmi_records.db next to this file)
       python bmi_gui.py --db my.db   (use a different database file)
       python bmi_gui.py --demo       (adds a 'Demo' person with sample data)
 """
+
 from __future__ import annotations
 
 import argparse
@@ -21,7 +21,7 @@ from bmi_core import (CATEGORIES, DEFAULT_DB_PATH, DISCLAIMER, BMIDatabase,
                       BMIResult, DatabaseError, Record, ValidationError,
                       evaluate, healthy_weight_range, parse_height, parse_weight)
 
-try:  # The chart is optional: the rest of the app works without matplotlib.
+try:
     import matplotlib.dates as mdates
     from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
     from matplotlib.figure import Figure
@@ -29,7 +29,6 @@ try:  # The chart is optional: the rest of the app works without matplotlib.
 except ImportError:
     HAS_MATPLOTLIB = False
 
-# Palette
 BG = "#eef2f5"
 PANEL = "#ffffff"
 INK = "#1f2933"
@@ -37,8 +36,7 @@ MUTED = "#616e7c"
 ACCENT = "#34506b"
 ERROR = "#b42318"
 NEUTRAL_CARD = "#cbd2d9"
-
-SCALE_MIN, SCALE_MAX = 12.0, 42.0  # BMI range drawn on the scale bar
+SCALE_MIN, SCALE_MAX = 12.0, 42.0
 
 
 class BMIApp(ttk.Frame):
@@ -353,7 +351,7 @@ class BMIApp(ttk.Frame):
         y_low = min([15.0] + [b - 2 for b in bmis])
         y_high = max([35.0] + [b + 2 for b in bmis])
 
-        for cat in CATEGORIES:  # shaded bands, labelled directly instead of a legend
+        for cat in CATEGORIES:
             band_low, band_high = max(cat.lower, y_low), min(cat.upper, y_high)
             if band_low >= band_high:
                 continue

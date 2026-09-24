@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 """
 Random Password Generator - desktop GUI (advanced tier).
 
@@ -6,6 +5,7 @@ Run:  python password_gui.py
 
 History is kept in memory only and disappears when the window closes.
 """
+
 from __future__ import annotations
 
 import math
@@ -22,10 +22,10 @@ from password_core import (AMBIGUOUS, CHARACTER_SETS, LABELS, MAX_LENGTH,
 try:
     import pyperclip
 except ImportError:
-    pyperclip = None  # falls back to tkinter's own clipboard
+    pyperclip = None
 
 HISTORY_SIZE = 5
-SLIDER_MAX = 64  # the spinbox still accepts up to MAX_LENGTH
+SLIDER_MAX = 64
 
 BG = "#f3f4f8"
 PANEL = "#ffffff"
